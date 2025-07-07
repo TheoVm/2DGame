@@ -4,7 +4,7 @@
 
 using json = nlohmann::json;
 
-auto generateMap(std::string path){
+auto generateMap(std::string path, int dataID){
 
     std::ifstream file(path);
     if(!file.is_open()){
@@ -18,7 +18,7 @@ auto generateMap(std::string path){
         std::cerr << "Error loading info: "<< e.what() << std::endl;
     }
 
-    nlohmann::json_abi_v3_12_0::basic_json<>::value_type data = json["layers"][0]["data"];
+    nlohmann::json_abi_v3_12_0::basic_json<>::value_type data = json["layers"][dataID]["data"];
 
     return data;    
 }
